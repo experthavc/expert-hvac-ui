@@ -140,7 +140,7 @@ const NavigationList = ({ callback }) => {
         <ListItem classes={{ root: classes.listItem, gutters: classes.listItemGutters }} key={'tokenomicsItem'}>
           <MenuItem
             key={'tokenomics'}
-            Item={{ name: "Tokenomics", link: '/tokenomics' }}
+            Item={{ name: "Tokenomics", link: '/#tokenomics' }}
             Variant={ItemVariant.Default}
             callback={callback}
           />

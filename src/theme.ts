@@ -8,7 +8,7 @@ const theme = createMuiTheme({
       main: '#212121',
     },
     secondary: {
-      main: '#49a0dd',
+      main: '#7ee1f2',
     },
     error: {
       main: red.A400,
@@ -19,7 +19,8 @@ const theme = createMuiTheme({
     text: {
       primary: '#acacac',
       secondary: '#fff'
-    }
+    },
+    divider: '#212121'
   },
   typography: {
     htmlFontSize: 20,

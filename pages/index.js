@@ -109,7 +109,9 @@ export default function Home({ posts }) {
         <MetadataItem graphic={"/images/team.png"} name={"Holders"} value={"10,000"}/>
       </div>
 
-      <Tokenomics />
+      <section id="tokenomics">
+        <Tokenomics />
+      </section>
       <div className={classes.productsContainer}>
         <Typography variant="h4" className={classes.productsTitle}>Products</Typography>
         <div className={classes.products}>
