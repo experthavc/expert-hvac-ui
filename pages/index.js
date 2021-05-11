@@ -1,65 +1,120 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Header from '../src/components/Header';
+import { makeStyles, Typography } from "@material-ui/core";
+import Main from '../src/components/Main';
+import Article from '../src/components/Product';
+import Newsletter from '../src/components/Newsletter';
+import Tokenomics from '../src/components/Tokenomics';
+import Footer from '../src/components/Footer';
+import moment from 'moment';
+import Product from '../src/components/Product';
+import MetadataItem from '../src/components/MetadataItem';
 
-export default function Home() {
+const useStyles = makeStyles((theme) => ({
+  container: {
+    backgroundColor: theme.palette.primary.main
+  },
+  productsContainer: {
+    padding: '0 5% 10% 10%',
+  },
+  productsTitle: {
+    fontWeight: 'bold',
+    marginBottom: '3%',
+
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      marginBottom: '5%'
+    },
+  },
+  products: {
+    display: 'flex',
+
+    [theme.breakpoints.down('sm')]: {
+      flexFlow: 'wrap',
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+    },
+  },
+  metadataContainer: {
+    padding: '0 5% 0% 10%',
+    margin: '0 0 5% 0',
+    
+    display: 'flex',
+    backgroundColor: '#242424',
+    gap: '10%',
+    flexBasis: '100%',
+
+    [theme.breakpoints.down('md')]: {
+      padding: '0 5% 0% 5%',
+      flexFlow: 'wrap',
+      gap: '5%',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      padding: '2% 5% 0 5%',
+      margin: '5% 0 0 0',
+      display: 'block',
+      textAlign: 'left'
+    },
+  }
+}));
+
+
+export default function Home({ posts }) {
+  const classes = useStyles();
+  const productData = [
+    {
+      releaseDate: moment().date(),
+      status: "In Development",
+      title: "Fermion Finance",
+      coverImage: {
+        url: '/images/coverimage.svg'
+      },
+      description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
+    },
+    {
+      releaseDate: moment().date(),
+      status: "In Planning",
+      title: "Fund.me Protocol",
+      coverImage: {
+        url: '/images/coverimage.svg'
+      },
+      description: "Smart contract to support funding operations in a decentralized methods. Further details will be published close to release dates."
+    },
+    {
+      releaseDate: moment().date(),
+      status: "In Development",
+      title: "Fermion FInance",
+      coverImage: {
+        url: '/images/coverimage.svg'
+      },
+      description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
+    }
+  ]
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className={classes.container}>
+      <Header />
+      <Main />
+      <div className={classes.metadataContainer}>
+        <MetadataItem graphic={"/images/bar-graph.png"} name={"Current Price"} value={"0.000000000125 USD"}/>
+        <MetadataItem graphic={"/images/house.png"} name={"Market Cap"} value={"10,000,000"}/>
+        <MetadataItem graphic={"/images/currency.png"} name={"Total Supply"} value={"500,000,000,000"}/>
+        <MetadataItem graphic={"/images/team.png"} name={"Holders"} value={"10,000"}/>
+      </div>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <Tokenomics />
+      <div className={classes.productsContainer}>
+        <Typography variant="h4" className={classes.productsTitle}>Products</Typography>
+        <div className={classes.products}>
+            {
+              productData.map(product => (
+                <Product {...product}/>
+              ))
+            }
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      </div>
+      <Footer />
     </div>
   )
 }
