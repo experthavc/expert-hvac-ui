@@ -1,8 +1,6 @@
 import Header from '../src/components/Header';
 import { makeStyles, Typography } from "@material-ui/core";
 import Main from '../src/components/Main';
-import Article from '../src/components/Product';
-import Newsletter from '../src/components/Newsletter';
 import Tokenomics from '../src/components/Tokenomics';
 import Footer from '../src/components/Footer';
 import moment from 'moment';
