@@ -1,5 +1,6 @@
 import { Button, makeStyles, Theme, Typography } from "@material-ui/core";
 import Image from 'next/image';
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -18,12 +19,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down('xs')]: {
       paddingLeft: '2%',
       paddingRight: '0',
+      position: 'absolute',
     },
   },
   rightPanel: {
     paddingTop: '100px',
     [theme.breakpoints.down('xs')]: {
-      paddingTop: 0
+      opacity: '0.2'
     },
   },
   busDescription: {
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: '1.88',
     [theme.breakpoints.down('xs')]: {
       position: 'absolute',
+      margin: '10% 0 0 0'
     },
   },
   ctaButton: {
@@ -38,12 +41,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '216px',
     height: '59px',
     borderRadius: '29.5px',
+    zIndex: 5,
     [theme.breakpoints.down('xs')]: {
-      marginTop: '120px'
+      margin: '150px 0 0 0'
     },
-    backgroundImage: 'linear-gradient(.82turn, rgba(73, 160, 221, 0.8), rgba(101, 255, 222, 0.5))'
+    backgroundImage: 'linear-gradient(0.82turn, rgba(73, 160, 221, 0.8), rgb(0 234 147 / 50%))'
     //backgroundImage: "linear-gradient(to left, rgba(73, 160, 221, 0.8) 82%, rgba(101, 255, 222, 0.5) 21%), linear-gradient(to bottom, #5d5757, #5d5757)"
-
   },
   ctaButtonLabel: {
     fontSize: '15px',
@@ -65,6 +68,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Main = () => {
   const classes = useStyles();
+  const router = useRouter();
+
+  const onCtaClick = (event: any) => {
+    event.preventDefault()
+    router.push(`/buy-now`)
+  }
 
   return (
     <div className={classes.container}>
@@ -75,7 +84,7 @@ const Main = () => {
         <Typography variant="body1" className={classes.busDescription}>
           Fermion (FER) is the utility token for Decentralized applications (DAPP) developed by Fermion itself. Check out Projects section for released/upcoming DAPPS. 
         </Typography>
-        <Button classes={{ label: classes.ctaButtonLabel }} variant="contained" className={classes.ctaButton}>
+        <Button classes={{ label: classes.ctaButtonLabel }} variant="contained" className={classes.ctaButton} onClick={onCtaClick}>
           Buy Now
         </Button>
       </div>

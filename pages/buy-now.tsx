@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '216px',
       height: '45px',
     },
-    backgroundImage: 'linear-gradient(.82turn, rgba(73, 160, 221, 0.8), rgba(101, 255, 222, 0.5))'
+    backgroundImage: 'linear-gradient(0.82turn, rgba(73, 160, 221, 0.8), rgb(0 234 147 / 50%))'
     //backgroundImage: "linear-gradient(to left, rgba(73, 160, 221, 0.8) 82%, rgba(101, 255, 222, 0.5) 21%), linear-gradient(to bottom, #5d5757, #5d5757)"
 
   },
