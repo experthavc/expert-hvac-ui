@@ -148,7 +148,7 @@ const NavigationList = ({ callback }) => {
         <ListItem classes={{ root: classes.listItem, gutters: classes.listItemGutters }} key={'productsItem'}>
           <MenuItem
             key={'product'}
-            Item={{ name: "Products", link: '/product' }}
+            Item={{ name: "Products", link: '/products' }}
             callback={callback}
           />
         </ListItem>

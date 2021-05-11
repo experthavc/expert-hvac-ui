@@ -157,14 +157,14 @@ const About = () => {
                   {rows.map((row) => (
                     <TableRow key={row.key}>
                       <TableCell component="th" scope="row" classes={{root: classes.cellRoot}}>
-                        <Typography variant="subtitle1">{row.key}</Typography>
+                        <Typography variant="body1">{row.key}</Typography>
                       </TableCell>
                       <TableCell align="left" classes={{root: classes.cellRoot}}>
                         {
                           row.snackbar !== undefined ?
                           <Chip icon={<FileCopyIcon />} label={row.value } color="secondary" onClick={() => console.log('clicked')} />
                             :
-                          <Typography variant="subtitle1">{row.value}</Typography> 
+                          <Typography variant="body1">{row.value}</Typography> 
                         }
                       </TableCell>
                     </TableRow>
