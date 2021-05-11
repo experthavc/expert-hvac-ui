@@ -13,6 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
   productsContainer: {
     padding: '0 5% 10% 10%',
+
+    [theme.breakpoints.down('md')]: {
+      padding: '0 5% 10% 5%',
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      padding: '0 5% 10% 5%',
+    },
   },
   productsTitle: {
     fontWeight: 'bold',
@@ -66,7 +74,7 @@ export default function Home({ posts }) {
       status: "In Development",
       title: "Fermion Finance",
       coverImage: {
-        url: '/images/coverimage.svg'
+        url: '/images/coverImage.svg'
       },
       description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
     },
@@ -75,7 +83,7 @@ export default function Home({ posts }) {
       status: "In Planning",
       title: "Fund.me Protocol",
       coverImage: {
-        url: '/images/coverimage.svg'
+        url: '/images/coverImage.svg'
       },
       description: "Smart contract to support funding operations in a decentralized methods. Further details will be published close to release dates."
     },
@@ -84,7 +92,7 @@ export default function Home({ posts }) {
       status: "In Development",
       title: "Fermion FInance",
       coverImage: {
-        url: '/images/coverimage.svg'
+        url: '/images/coverImage.svg'
       },
       description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
     }
