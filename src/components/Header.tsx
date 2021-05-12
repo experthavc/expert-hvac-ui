@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sideNavList: {
     position: 'fixed',
-    zIndex: 5,
+    zIndex: 7,
     width: '100%',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,

@@ -20,19 +20,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   footerContainer: {
     backgroundColor: '#242424',
-    padding: '45px 231px 32px',
+    padding: '2% 10% 0 10%',
 
     [theme.breakpoints.down('md')]: {
-      padding: '45px 5% 32px 5%'
+      padding: '2% 5% 32px 5%'
     },
     [theme.breakpoints.down('sm')]: {
-      padding: '45px 2% 32px 2%'
+      padding: '2% 2% 32px 2%'
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
       display: 'block',
       borderRadius: 0,
-      padding: '45px 2% 32px 2%'
+      padding: '2% 2% 32px 2%'
     },
   },
   footer: {

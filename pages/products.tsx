@@ -1,12 +1,11 @@
-import { makeStyles, Theme, Typography, GridListTile, GridListTileBar, IconButton, GridList } from "@material-ui/core";
+import { makeStyles, Theme, Typography } from "@material-ui/core";
 import Footer from "../src/components/Footer";
 import Header from "../src/components/Header";
 import { useState } from "react";
-import { getAllProducts } from "../src/api/graphcms";
-import { Info } from '@material-ui/icons';
+import { getAllProductsFromCMS } from "../src/api/graphcms";
 import { useRouter } from 'next/router'
 import ProductModel from "../src/models/Product";
-import Product from "../src/components/Product";
+import Product from "../src/components/ProductHighlight";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -53,7 +52,7 @@ const Products = () => {
   }
 
   if(products.length === 0) {
-      getAllProducts()
+    getAllProductsFromCMS()
       .then(products => setProducts(products));
   }
   

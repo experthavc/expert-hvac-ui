@@ -9,10 +9,16 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { useState } from "react";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -109,37 +115,64 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+const rows = [
+  {
+    key: 'Contract Address',
+    value: '0x542ECAb35F70003401D9aD6909d4A3dbe7282494',
+    snackbar: {
+      type: 'primary'
+    }
+  },
+  {
+    key: 'Network',
+    value: 'Binance Smart Chain'
+  },
+  {
+    key: 'Release Date',
+    value: 'August 17, 2021',
+    snackbar: {
+      type: 'secondary'
+    }
+  },
+  {
+    key: 'Initial Supply',
+    value: '1,000,000,000,000'
+  },
+  {
+    key: 'Release Method',
+    value: 'No Presale'
+  }
+];
+
+
 const About = () => {
   const classes = useStyles();
-  const rows = [
-    {
-      key: 'Contract Address',
-      value: '0x542ECAb35F70003401D9aD6909d4A3dbe7282494',
-      snackbar: {
-        type: 'primary'
-      }
-    },
-    {
-      key: 'Network',
-      value: 'Binance Smart Chain'
-    },
-    {
-      key: 'Release Date',
-      value: 'August 17, 2021',
-      snackbar: {
-        type: 'secondary'
-      }
-    },
-    {
-      key: 'Initial Supply',
-      value: '1,000,000,000,000'
-    },
-    {
-      key: 'Release Method',
-      value: 'No Presale'
-    }
-  ];
+  const [open, setOpen] = useState(false);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const copyContractAddress = () => {
+    const el = document.createElement('textarea');
+    el.value = '0x542ECAb35F70003401D9aD6909d4A3dbe7282494';
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    handleClick();
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <div>
       <Header />
@@ -162,7 +195,7 @@ const About = () => {
                       <TableCell align="left" classes={{root: classes.cellRoot}}>
                         {
                           row.snackbar !== undefined ?
-                          <Chip icon={<FileCopyIcon />} label={row.value } color="secondary" onClick={() => console.log('clicked')} />
+                          <Chip icon={<FileCopyIcon />} label={row.value } color="secondary" onClick={copyContractAddress} />
                             :
                           <Typography variant="body1">{row.value}</Typography> 
                         }
@@ -173,10 +206,16 @@ const About = () => {
               </Table>
             </TableContainer>
           </section>
+          <section>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Contract copied to clipboard
+            </Alert>
+          </Snackbar>
+          </section>
         </div>
       </div>
       <Tokenomics />
-
       <Footer />
     </div>
   );

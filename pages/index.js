@@ -3,9 +3,9 @@ import { makeStyles, Typography } from "@material-ui/core";
 import Main from '../src/components/Main';
 import Tokenomics from '../src/components/Tokenomics';
 import Footer from '../src/components/Footer';
-import moment from 'moment';
-import Product from '../src/components/Product';
+import Product from '../src/components/ProductHighlight';
 import MetadataItem from '../src/components/MetadataItem';
+import { getAllProductsFromCMS } from '../src/api/graphcms';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -66,37 +66,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Home({ posts }) {
+export default function Home({ products }) {
   const classes = useStyles();
-  const productData = [
-    {
-      releaseDate: moment().date(),
-      status: "In Development",
-      title: "Fermion Finance",
-      coverImage: {
-        url: '/images/coverImage.svg'
-      },
-      description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
-    },
-    {
-      releaseDate: moment().date(),
-      status: "In Planning",
-      title: "Fund.me Protocol",
-      coverImage: {
-        url: '/images/coverImage.svg'
-      },
-      description: "Smart contract to support funding operations in a decentralized methods. Further details will be published close to release dates."
-    },
-    {
-      releaseDate: moment().date(),
-      status: "In Development",
-      title: "Fermion FInance",
-      coverImage: {
-        url: '/images/coverImage.svg'
-      },
-      description: "A Platform to monitor various cryptocurrencies. Alerts can be setup accordingly.  Also, data analytic tools can be accessed to track different wallets, analyize block chain transactions etc."
-    }
-  ]
 
   return (
     <div className={classes.container}>
@@ -116,7 +87,7 @@ export default function Home({ posts }) {
         <Typography variant="h4" className={classes.productsTitle}>Products</Typography>
         <div className={classes.products}>
             {
-              productData.map(product => (
+              products.map(product => (
                 <Product {...product}/>
               ))
             }
@@ -125,4 +96,14 @@ export default function Home({ posts }) {
       <Footer />
     </div>
   )
+}
+
+export async function getServerSideProps({ params, preview = false }) {
+  const products = await getAllProductsFromCMS();
+
+  return {
+    props: {
+      products: products
+    },
+  }
 }

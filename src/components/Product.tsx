@@ -1,109 +1,164 @@
-import { Avatar, Link, makeStyles, Theme, Typography } from "@material-ui/core";
-import clsx from 'clsx';
+import { Avatar, Breadcrumbs, makeStyles, Theme, Typography, Chip } from '@material-ui/core';
+import moment from 'moment';
 import Image from 'next/image';
-import Event from '@material-ui/icons/Event';
-import HourglassEmpty from '@material-ui/icons/HourglassEmpty';
-import { useRouter } from 'next/router'
-import moment from "moment";
-import ProductType from "../models/Product";
+import Link from 'next/link';
+import { useState } from 'react';
+import ProductSchema from '../models/Product';
+import SocialMediaShare from './SocialMediaShare';
+import clsx from 'clsx';
+import Head from "next/head";
 
-const useStyles = (makeStyles((theme: Theme) => ({
-  product: {
-    margin: '0 5% 5% 0',
-    padding: '1%',
-    width: '40%',
-    height: '40%',
-    border: '1px solid #ececec',
-    borderRadius: '30px',
-
-    [theme.breakpoints.down('xs')]: {
-      width: '100%',
-      height: '100%',
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    width: '100%',
+    padding: '150px 0 0 0',
+    [theme.breakpoints.down('md')]: {
+      padding: '100px 0 0 0',
     },
+    [theme.breakpoints.down('sm')]: {
+      padding: '100px 0 0 0',
+    }
   },
-  productGraphic: {
-    position: 'relative',
-    borderRadius: '30px 30px 0 0',
-    objectFit: 'cover',
-    margin: '0 0 32px',
-    width: '100%',
-    height: '200px'
-  },
-  postImage: {
-    borderRadius: '30px 30px 0 0',
-    width: '100%',
-    height: '200px'
-  },
-  flex: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    flexBasis: '50%',
-  },
-  avatar: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-    marginRight: '5%'
+  breadcrumbs: {
+
   },
   metadata: {
-    margin: '0 5% 0 5%',
-    width: '100%',
-    fontSize: '14px'
+    margin: '0 0 2% 0',
+    display: 'flex',
+    alignItems: 'center'
   },
-  info: {
-    margin: '5% 0 0 5%'
+  avatar: {
+    margin: '0 2% 0 0'
+  },
+  cover: {
+    position: 'relative',
+    width: '50%',
+    height: '640px',
+    objectFit: 'contain',
+    [theme.breakpoints.down('xs')]: {
+      height: '350px',
+    },
+  },
+  content: {
+    width: '100%',
+    fontSize: '16px',
+    lineHeight: '35px'
+  },
+  contentContainer: {
+    width: '100%',
+    padding: '0 10% 2% 10%',
+
+    [theme.breakpoints.down('md')]: {
+      padding: '0 5% 2% 5%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '0 2% 2% 2%'
+    }
   },
   title: {
-    marginTop: '5%',
-    marginBottom: '3%',
+    margin: '2% 0 2% 0',
+    fontWeight: 'bold',
     color: theme.palette.text.secondary
-  }
-})));
+  },
+  tags: {
+    display: 'flex',
+    flexFlow: 'wrap'
+  },
+  tag: {
+    margin: '0 2% 2% 0'
+  },
+  borderTop: {
+    borderTop: '1px solid grey',
+    margin: '0 0 2% 0'
+  },
+  borderDown: {
+    borderBottom: '1px solid grey',
+  },
+  articles: {
+    display: 'flex',
 
-const MetaData = (metadata: { date: string, status: string }) => {
+    [theme.breakpoints.down('sm')]: {
+      flexFlow: 'wrap',
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+    },
+  },
+  articlesTitle: {
+    fontWeight: 'bold',
+    marginBottom: '3%',
+
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      marginBottom: '5%'
+    },
+  },
+}));
+
+const Nav = ({ category, slug }: { category: string, slug: string }) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx(classes.flex, classes.metadata)}>
-      <div className={classes.flex}>
-        <Avatar className={classes.avatar}>
-          <Event />
-        </Avatar>
-        <span> {moment(metadata.date, 'YYYY-MM-DD').format("MMM Do, YYYY")} </span>
-      </div>
+    <Breadcrumbs className={classes.breadcrumbs}>
+      <Link href="/articles">Articles</Link>
+      <Link href={`/articles/${slug}`}>{category}</Link>
+      <Typography variant="body1">{slug}</Typography>
+    </Breadcrumbs>
 
-      <div className={classes.flex}>
-        <Avatar className={classes.avatar}>
-          <HourglassEmpty />
-        </Avatar>
-        <span>{metadata.status}</span>        
-      </div>
+  );
+};
+
+const Tags = ({ Tags } : { Tags: string[]}) => {
+  const classes = useStyles();
+
+  return(
+    <div className={classes.tags}>
+      {
+        Tags.map(tag => (
+          <Chip className={classes.tag} label={tag}/>
+        ))
+      }
     </div>
   );
 };
 
-const Product = (product: ProductType) => {
+const Product = ({ product } : { product: ProductSchema }) => {
   const classes = useStyles();
-  const router = useRouter();
+  let content = product.content.html.replace(/width="\d{1,5}"/g, `width="100%"`);
+  content = content.replace(/height="\d{1,5}"/g, `height="100%"`);
+
+  const url = `https://fermion.net/products/${product.slug}`;
 
   return (
-    <div className={classes.product}>
-      <div className={classes.productGraphic}>
-        <Image 
-          layout="fill"
-          objectFit="contain"
-          src={product.coverImage.url}
-          className={classes.postImage}
+    <div className={classes.container}>
+      <Head>
+        <title>
+          {`${product.title} | Fermion`}
+        </title>
+        <meta property="og:url" content={`${url}`} />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content={`${product.title}`}
         />
-      </div>
-      <MetaData date={product.releaseDate.toString()} status={product.status} key={product.title}/>
-      <div className={classes.info}>
-        <Link href={`/product/${product.slug}`}>
-          <Typography className={classes.title} variant="h5">{product.title}</Typography>
-        </Link>
-        <Typography variant="body1">{product.description}</Typography>
+        <meta name="twitter:card" content={`summary`}/>
+        <meta
+          property="og:description"
+          content={`${product.content.text ? product.content.text.substring(0, 100) : 'Check out the article'}`}
+        />
+        <meta property="og:image" content={`${product.productImage.url}`} />
+      </Head>
+      <div className={classes.contentContainer}>
+        <Image 
+          src={product.productImage.url}
+          height={500}
+          width={640}
+          objectFit='contain'
+        />
+        <div className={classes.content} dangerouslySetInnerHTML={{ __html: `${content}`}}></div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Product;
