@@ -50,7 +50,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   ctaButtonLabel: {
     fontSize: '15px',
-    color: theme.palette.common.white
+    fontWeight: 200,
+    color: theme.palette.common.black
   },
   workoutImage: {
     display: 'none',

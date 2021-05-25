@@ -18,6 +18,10 @@ a {
   box-sizing: border-box;
 }
 
+.MuiAvatar-img {
+ object-fit: contain !important;
+}
+
 @font-face {
   font-family: "Gilroy";
   src: url("/fonts/Gilroy/Gilroy-Light.otf");

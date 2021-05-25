@@ -6,6 +6,8 @@ import Footer from '../src/components/Footer';
 import Product from '../src/components/ProductHighlight';
 import MetadataItem from '../src/components/MetadataItem';
 import { getAllProductsFromCMS } from '../src/api/graphcms';
+import { useEffect, useState } from 'react';
+import { getTokenPrice } from '../src/api/dexguru';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -68,34 +70,74 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home({ products }) {
   const classes = useStyles();
+  const [token, setToken] = useState(undefined);
+
+  useEffect(async () => {
+    if (token) {
+      await new Promise(resolve => setTimeout(() => resolve(), 10000));
+    }
+    try {
+      const localToken = await getTokenPrice();
+      if (token) {
+        localToken.previousUSD = token.priceUSD;
+        localToken.previousCap = token.marketCap;
+      }
+      setToken(localToken);
+    } catch (error) {
+      // ignore.
+    }
+  });
 
   return (
     <div className={classes.container}>
       <Header />
       <Main />
       <div className={classes.metadataContainer}>
-        <MetadataItem graphic={"/images/bar-graph.png"} name={"Current Price"} value={"0.000000000125 USD"}/>
-        <MetadataItem graphic={"/images/house.png"} name={"Market Cap"} value={"10,000,000"}/>
-        <MetadataItem graphic={"/images/currency.png"} name={"Total Supply"} value={"500,000,000,000"}/>
-        <MetadataItem graphic={"/images/team.png"} name={"Holders"} value={"10,000"}/>
+        <MetadataItem
+          graphic={"/images/bar-graph.png"}
+          name={"Current Price"}
+          value={token != undefined ? token.priceUSD : undefined}
+          previousValue={token != undefined ? token.previousUSD : null}
+          showDifference={true}
+        />
+        <MetadataItem
+          graphic={"/images/house.png"}
+          name={"Market Cap"}
+          value={token != undefined ? token.marketCap : undefined}
+          previousValue={token != undefined ? token.previousCap : null}
+          format={true}
+          showDifference={true}
+        />
+        <MetadataItem
+          graphic={"/images/currency.png"}
+          name={"Circulating Supply"}
+          value={token != undefined ? token.supply : undefined}
+          format={true}
+        />
+        <MetadataItem
+          graphic={"/images/fire.png"}
+          name={"Burnt Tokens"}
+          value={token != undefined ? token.holders : undefined}
+          format={true}
+        />
       </div>
 
       <section id="tokenomics">
         <Tokenomics />
       </section>
       <div className={classes.productsContainer}>
-        <Typography variant="h4" className={classes.productsTitle}>Products</Typography>
+        <Typography variant="h4" className={classes.productsTitle}>
+          Products
+        </Typography>
         <div className={classes.products}>
-            {
-              products.map(product => (
-                <Product {...product}/>
-              ))
-            }
+          {products.map((product) => (
+            <Product {...product} />
+          ))}
         </div>
       </div>
       <Footer />
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps({ params, preview = false }) {
