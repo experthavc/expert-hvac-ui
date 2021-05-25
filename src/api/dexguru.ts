@@ -11,7 +11,7 @@ const getTokenPrice = async () : Promise<Token> => {
       const burnWalletBalance = await getCurrentBalance(burnWallet);
 
       const { priceUSD, id, name, symbol } = tokenResponse.data;
-      const totalSupply : number = 500e9;
+      const totalSupply : number = 500e12;
   
       const token : Token = {
         id,
