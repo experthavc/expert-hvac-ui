@@ -149,7 +149,7 @@ const Footer = () => {
       <footer className={classes.footer}>
         <div className={classes.branding}>
           <div className={classes.brand}> 
-            <Image src="/images/Fermeon-logo.png" height={50} width={50} />
+            <Image src="/images/fermeon-logo.png" height={50} width={50} />
             <Typography className={classes.brandTitle} variant="h4">Fermeon</Typography>
           </div>
           <div>
