@@ -76,13 +76,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.secondary
   },
   content: {
-    background: "rgba(33, 33, 33, .5) url('/images/fermion-bg.png')",
+    background: "rgba(33, 33, 33, .5) url('/images/fermeon-bg.png')",
     backgroundRepeat: "no-repeat",
     backgroundPosition: 'right',
     backgroundBlendMode: 'darken',
     
     [theme.breakpoints.down('sm')]: {
-      background: "rgba(33, 33, 33, .8) url('/images/fermion-bg.png')",
+      background: "rgba(33, 33, 33, .8) url('/images/fermeon-bg.png')",
       backgroundRepeat: "no-repeat",
       backgroundPosition: 'center'
     },

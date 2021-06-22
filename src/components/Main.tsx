@@ -79,10 +79,10 @@ const Main = () => {
     <div className={classes.container}>
       <div className={classes.leftPanel}>
         <Typography variant="h1" className={classes.businessLine}>
-          Defi Token, used  <br /> to access  Fermion Protocol based DAPP(s).
+          Defi Token, used  <br /> to access  Fermeon Protocol based DAPP(s).
         </Typography>
         <Typography variant="body1" className={classes.busDescription}>
-          Fermion (FER) is the utility token for Decentralized applications (DAPP) developed by Fermion itself. Check out Projects section for released/upcoming DAPPS. 
+          Fermeon (FER) is the utility token for Decentralized applications (DAPP) developed by Fermeon itself. Check out Projects section for released/upcoming DAPPS. 
         </Typography>
         <Button classes={{ label: classes.ctaButtonLabel }} variant="contained" className={classes.ctaButton} onClick={onCtaClick}>
           Buy Now
@@ -91,10 +91,10 @@ const Main = () => {
 
       <div className={classes.rightPanel}>
         <Image
-          src="/images/fermion-bg.png"
+          src="/images/fermeon-bg.png"
           height={600}
           width={870}
-          alt="mind-body-fitness"
+          alt="fermeon-token-bg"
         />
       </div>
     </div>

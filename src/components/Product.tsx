@@ -127,13 +127,13 @@ const Product = ({ product } : { product: ProductSchema }) => {
   let content = product.content.html.replace(/width="\d{1,5}"/g, `width="100%"`);
   content = content.replace(/height="\d{1,5}"/g, `height="100%"`);
 
-  const url = `https://fermion.net/products/${product.slug}`;
+  const url = `https://fermeon.net/products/${product.slug}`;
 
   return (
     <div className={classes.container}>
       <Head>
         <title>
-          {`${product.title} | Fermion`}
+          {`${product.title} | Fermeon`}
         </title>
         <meta property="og:url" content={`${url}`} />
         <meta property="og:type" content="website" />

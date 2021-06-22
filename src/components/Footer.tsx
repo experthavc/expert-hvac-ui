@@ -128,7 +128,7 @@ const BottomFooter = () => {
   return (
    <div className={classes.bottomFooter}>
     <div className={classes.copyright}>
-      <Typography variant='body2'>© {new Date().getFullYear()} Fermion., All rights reserved.</Typography>
+      <Typography variant='body2'>© {new Date().getFullYear()} Fermeon., All rights reserved.</Typography>
     </div>
     <div className={classes.footerNav}>
       <span className={classes.footerSpacing}>
@@ -149,11 +149,11 @@ const Footer = () => {
       <footer className={classes.footer}>
         <div className={classes.branding}>
           <div className={classes.brand}> 
-            <Image src="/images/fermion-logo.png" height={50} width={50} />
-            <Typography className={classes.brandTitle} variant="h4">Fermion</Typography>
+            <Image src="/images/Fermeon-logo.png" height={50} width={50} />
+            <Typography className={classes.brandTitle} variant="h4">Fermeon</Typography>
           </div>
           <div>
-            <Typography className={classes.brandDescription} variant="body1">Fermion (FER) will be the only token used for products, decentralized apps developed under Fermion ecosystem.  Timelines for all the projects will be strictly followed through and every update is announced in a timely manner. </Typography>
+            <Typography className={classes.brandDescription} variant="body1">Fermeon (FER) will be the only token used for products, decentralized apps developed under Fermeon ecosystem.  Timelines for all the projects will be strictly followed through and every update is announced in a timely manner. </Typography>
           </div>
         </div>
         <div className={clsx(classes.socialMedia, classes.root)}>

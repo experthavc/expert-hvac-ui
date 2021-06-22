@@ -181,8 +181,8 @@ const Header = () => {
             <div className={clsx(classes.grow, classes.logoContainer)}>
               <span className={classes.primaryLink}>
                 <Link href="/" className={classes.logo}>
-                  <Image src="/images/fermion-logo.png" height={50} width={50} />
-                  <Typography className={classes.primaryLink} style={{marginLeft: '3%'}} variant="h4">Fermion</Typography>
+                  <Image src="/images/fermeon-logo.png" height={50} width={50} />
+                  <Typography className={classes.primaryLink} style={{marginLeft: '3%'}} variant="h4">Fermeon</Typography>
                 </Link>
               </span>
             </div>

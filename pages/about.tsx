@@ -179,8 +179,8 @@ const About = () => {
       <div className={classes.container}>
         <div className={classes.content}>
           <section>
-            <Typography variant="h2" className={classes.tagline}>Fermion Token (FER)</Typography>
-            <Typography variant="body1" className={classes.description}>Fermion (FER) is the utility token for Decentralized applications (DAPP) developed by Fermion itself. FER is the first smart contract launched under the FER ecosystem. The contract being ERC-20 standard can be served as digital asset. This digital asset will be used to get access to various products/services offered under FERMION ecosystem. The products and services here are being referred to smart contracts, decentralized applications built on top of FER based smart contracts or existing smart contracts. Each product goes through intense cycles of planning, development, unit testing, SIT, UAT, Integration. Versioning of each product is maintained in Semversion format. </Typography>        
+            <Typography variant="h2" className={classes.tagline}>Fermeon Token (FER)</Typography>
+            <Typography variant="body1" className={classes.description}>Fermeon (FER) is the utility token for Decentralized applications (DAPP) developed by Fermeon itself. FER is the first smart contract launched under the FER ecosystem. The contract being ERC-20 standard can be served as digital asset. This digital asset will be used to get access to various products/services offered under Fermeon ecosystem. The products and services here are being referred to smart contracts, decentralized applications built on top of FER based smart contracts or existing smart contracts. Each product goes through intense cycles of planning, development, unit testing, SIT, UAT, Integration. Versioning of each product is maintained in Semversion format. </Typography>        
           </section>
           <section>
             <Typography variant="h2" className={classes.tagline}>High Level Details</Typography>
