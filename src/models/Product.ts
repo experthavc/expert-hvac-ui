@@ -1,16 +1,13 @@
 import RichText from "./RichText";
 
 type Product = {
-  releaseDate: string,
-  releaseStatus: string,
   title: string,
   description: string,
   slug: string,
-  productImage: {
+  image: {
     url: string
   },
-  content: RichText,
-  tags: string[]
+  content: RichText
 }
 
 export default Product;

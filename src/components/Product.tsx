@@ -1,101 +1,106 @@
-import { Avatar, Breadcrumbs, makeStyles, Theme, Typography, Chip } from '@material-ui/core';
-import moment from 'moment';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import ProductSchema from '../models/Product';
-import SocialMediaShare from './SocialMediaShare';
-import clsx from 'clsx';
+import {
+  Avatar,
+  Breadcrumbs,
+  makeStyles,
+  Theme,
+  Typography,
+  Chip,
+} from "@material-ui/core";
+import moment from "moment";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import ProductSchema from "../models/Product";
+import SocialMediaShare from "./SocialMediaShare";
+import clsx from "clsx";
 import Head from "next/head";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    width: '100%',
-    padding: '150px 0 0 0',
-    [theme.breakpoints.down('md')]: {
-      padding: '100px 0 0 0',
+    width: "100%",
+    padding: "150px 0 0 0",
+    [theme.breakpoints.down("md")]: {
+      padding: "100px 0 0 0",
     },
-    [theme.breakpoints.down('sm')]: {
-      padding: '100px 0 0 0',
-    }
+    [theme.breakpoints.down("sm")]: {
+      padding: "100px 0 0 0",
+    },
   },
-  breadcrumbs: {
-
-  },
+  breadcrumbs: {},
   metadata: {
-    margin: '0 0 2% 0',
-    display: 'flex',
-    alignItems: 'center'
+    margin: "0 0 2% 0",
+    display: "flex",
+    alignItems: "center",
   },
   avatar: {
-    margin: '0 2% 0 0'
+    margin: "0 2% 0 0",
   },
   cover: {
-    position: 'relative',
-    width: '50%',
-    height: '640px',
-    objectFit: 'contain',
-    [theme.breakpoints.down('xs')]: {
-      height: '350px',
+    position: "relative",
+    width: "50%",
+    height: "640px",
+    objectFit: "contain",
+    [theme.breakpoints.down("xs")]: {
+      height: "350px",
     },
   },
   content: {
-    width: '100%',
-    fontSize: '16px',
-    lineHeight: '35px'
+    width: "100%",
+    fontSize: "16px",
+    lineHeight: "35px",
   },
   contentContainer: {
-    width: '100%',
-    padding: '0 10% 2% 10%',
+    width: "100%",
+    padding: "0 10% 2% 10%",
 
-    [theme.breakpoints.down('md')]: {
-      padding: '0 5% 2% 5%'
+    [theme.breakpoints.down("md")]: {
+      padding: "0 5% 2% 5%",
     },
-    [theme.breakpoints.down('sm')]: {
-      padding: '0 2% 2% 2%'
-    }
+    [theme.breakpoints.down("sm")]: {
+      padding: "0 2% 2% 2%",
+    },
   },
   title: {
-    margin: '2% 0 2% 0',
-    fontWeight: 'bold',
-    color: theme.palette.text.secondary
+    margin: "2% 0 2% 0",
+    fontWeight: "bold",
+    color: theme.palette.text.secondary,
   },
   tags: {
-    display: 'flex',
-    flexFlow: 'wrap'
+    display: "flex",
+    flexFlow: "wrap",
   },
   tag: {
-    margin: '0 2% 2% 0'
+    margin: "0 2% 2% 0",
   },
   borderTop: {
-    borderTop: '1px solid grey',
-    margin: '0 0 2% 0'
+    borderTop: "1px solid grey",
+    margin: "0 0 2% 0",
   },
   borderDown: {
-    borderBottom: '1px solid grey',
+    borderBottom: "1px solid grey",
   },
   articles: {
-    display: 'flex',
+    display: "flex",
 
-    [theme.breakpoints.down('sm')]: {
-      flexFlow: 'wrap',
+    [theme.breakpoints.down("sm")]: {
+      flexFlow: "wrap",
     },
-    [theme.breakpoints.down('xs')]: {
-      display: 'block',
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
     },
   },
   articlesTitle: {
-    fontWeight: 'bold',
-    marginBottom: '3%',
+    fontWeight: "bold",
+    marginBottom: "3%",
 
-    [theme.breakpoints.down('xs')]: {
-      textAlign: 'center',
-      marginBottom: '5%'
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+      marginBottom: "5%",
     },
   },
 }));
 
-const Nav = ({ category, slug }: { category: string, slug: string }) => {
+const Nav = ({ category, slug }: { category: string; slug: string }) => {
   const classes = useStyles();
 
   return (
@@ -104,58 +109,60 @@ const Nav = ({ category, slug }: { category: string, slug: string }) => {
       <Link href={`/articles/${slug}`}>{category}</Link>
       <Typography variant="body1">{slug}</Typography>
     </Breadcrumbs>
-
   );
 };
 
-const Tags = ({ Tags } : { Tags: string[]}) => {
+const Tags = ({ Tags }: { Tags: string[] }) => {
   const classes = useStyles();
 
-  return(
+  return (
     <div className={classes.tags}>
-      {
-        Tags.map(tag => (
-          <Chip className={classes.tag} label={tag}/>
-        ))
-      }
+      {Tags.map((tag) => (
+        <Chip className={classes.tag} label={tag} />
+      ))}
     </div>
   );
 };
 
-const Product = ({ product } : { product: ProductSchema }) => {
+const Product = ({ service }: { service: ProductSchema }) => {
   const classes = useStyles();
-  let content = product.content.html.replace(/width="\d{1,5}"/g, `width="100%"`);
+  let content = service.content.html.replace(
+    /width="\d{1,5}"/g,
+    `width="100%"`
+  );
   content = content.replace(/height="\d{1,5}"/g, `height="100%"`);
 
-  const url = `https://fermeon.net/products/${product.slug}`;
+  const url = `https://fermeon.net/services/${service.slug}`;
 
   return (
     <div className={classes.container}>
       <Head>
-        <title>
-          {`${product.title} | Fermeon`}
-        </title>
+        <title>{`${service.title} | Fermeon`}</title>
         <meta property="og:url" content={`${url}`} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={`${product.title}`}
-        />
-        <meta name="twitter:card" content={`summary`}/>
+        <meta property="og:title" content={`${service.title}`} />
+        <meta name="twitter:card" content={`summary`} />
         <meta
           property="og:description"
-          content={`${product.content.text ? product.content.text.substring(0, 100) : 'Check out the article'}`}
+          content={`${
+            service.content.text
+              ? service.content.text.substring(0, 100)
+              : "Check out the article"
+          }`}
         />
-        <meta property="og:image" content={`${product.productImage.url}`} />
+        <meta property="og:image" content={`${service.image.url}`} />
       </Head>
       <div className={classes.contentContainer}>
-        <Image 
-          src={product.productImage.url}
+        <Image
+          src={service.image.url}
           height={500}
           width={640}
-          objectFit='contain'
+          objectFit="contain"
         />
-        <div className={classes.content} dangerouslySetInnerHTML={{ __html: `${content}`}}></div>
+        <div
+          className={classes.content}
+          dangerouslySetInnerHTML={{ __html: `${content}` }}
+        ></div>
       </div>
     </div>
   );
