@@ -132,12 +132,12 @@ const Product = ({ service }: { service: ProductSchema }) => {
   );
   content = content.replace(/height="\d{1,5}"/g, `height="100%"`);
 
-  const url = `https://fermeon.net/services/${service.slug}`;
+  const url = `https://tdotroofers.com/services/${service.slug}`;
 
   return (
     <div className={classes.container}>
       <Head>
-        <title>{`${service.title} | Fermeon`}</title>
+        <title>{`${service.title} | T Dot Roofers`}</title>
         <meta property="og:url" content={`${url}`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`${service.title}`} />

@@ -129,7 +129,7 @@ const BottomFooter = () => {
     <div className={classes.bottomFooter}>
       <div className={classes.copyright}>
         <Typography variant="body2">
-          © {new Date().getFullYear()} Fermeon., All rights reserved.
+          © {new Date().getFullYear()} T dot Roofers Inc., All rights reserved.
         </Typography>
       </div>
       <div className={classes.footerNav}>
