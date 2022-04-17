@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
     minHeight: "85vh",
+
+    [theme.breakpoints.down("xs")]: {
+      minHeight: "70vh",
+    },
   },
   leftPanel: {
     flexBasis: "50%",
