@@ -1,7 +1,8 @@
 import { Button, makeStyles, Theme, Typography } from "@material-ui/core";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { config, useTransition, animated } from "react-spring";
 import get_google_reviews from "../../pages/api/reviews";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -79,6 +80,35 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Main = () => {
   const classes = useStyles();
   const router = useRouter();
+  const [items, setItems] = useState([]);
+  const [index, set] = useState(0);
+
+  const slides = [
+    { id: 0, url: `/images/inspection.png` },
+    { id: 1, url: `/images/main.png` },
+    { id: 2, url: `/images/roof.png` },
+  ];
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      set((state) => (state + 1) % 4);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, []);
+
+  const transitions = useTransition<any, any[]>(slides[index], {
+    from: { position: "absolute", opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    delay: 200,
+    config: config.molasses,
+    onRest: () => {
+      if (index === slides.length - 1) {
+        set(0);
+      }
+    },
+  });
 
   return (
     <div className={classes.container}>
@@ -104,13 +134,21 @@ const Main = () => {
       </div>
 
       <div className={classes.rightPanel}>
-        <Image
-          src="/images/main.png"
-          className={classes.ctaImage}
-          height={600}
-          width={700}
-          alt="fermeon-token-bg"
-        />
+        {transitions((props, item) => (
+          <animated.div
+            style={{
+              ...props,
+            }}
+          >
+            <Image
+              src={item.url}
+              className={classes.ctaImage}
+              height={600}
+              width={700}
+              alt="fermeon-token-bg"
+            />
+          </animated.div>
+        ))}
       </div>
     </div>
   );

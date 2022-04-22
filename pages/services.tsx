@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: "0 5% 10% 5%",
     },
     [theme.breakpoints.down("sm")]: {
-      padding: "0 2% 10% 2%",
+      padding: "20% 2% 10% 2%",
     },
   },
   tagline: {

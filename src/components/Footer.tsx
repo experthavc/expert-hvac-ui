@@ -166,11 +166,6 @@ const Footer = () => {
         </div>
         <div className={clsx(classes.socialMedia, classes.root)}>
           <Avatar
-            src="/images/discord.png"
-            variant="square"
-            imgProps={{ width: "25px", height: "25px" }}
-          />
-          <Avatar
             src="/images/instagram.png"
             variant="square"
             sizes="45px"
@@ -178,16 +173,6 @@ const Footer = () => {
           />
           <Avatar
             src="/images/facebook.png"
-            variant="square"
-            imgProps={{ width: "25px", height: "25px" }}
-          />
-          <Avatar
-            src="/images/trello.png"
-            variant="square"
-            imgProps={{ width: "25px", height: "25px" }}
-          />
-          <Avatar
-            src="/images/github.png"
             variant="square"
             imgProps={{ width: "25px", height: "25px" }}
           />

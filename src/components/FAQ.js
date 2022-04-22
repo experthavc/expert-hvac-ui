@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     width: "100%",
     paddingTop: "60px",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "25%",
+    },
   },
   content: {
     marginLeft: "20%",
