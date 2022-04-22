@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "150px 0 0 0",
     },
     backgroundImage:
-      "linear-gradient(90deg, hsla(45, 58%, 57%, 1) 0%, hsla(42, 35%, 57%, 1) 49%, hsla(54, 93%, 34%, 1) 100%)",
+      "linear-gradient(90deg, hsla(42, 100%, 70%, 1) 0%, hsla(39, 100%, 76%, 1) 50%, hsla(49, 100%, 76%, 1) 100%)",
     //backgroundImage: "linear-gradient(to left, rgba(73, 160, 221, 0.8) 82%, rgba(101, 255, 222, 0.5) 21%), linear-gradient(to bottom, #5d5757, #5d5757)"
   },
   ctaButtonLabel: {

@@ -4,7 +4,6 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
-import { useRef } from "react";
 import "../styles/globals.css";
 import TawkTo from "tawkto-react";
 import { useEffect } from "react";
