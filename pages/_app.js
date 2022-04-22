@@ -4,10 +4,23 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
+import { useRef } from "react";
 import "../styles/globals.css";
+import TawkTo from "tawkto-react";
+import { useEffect } from "react";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+
+  useEffect(() => {
+    const tawk = new TawkTo("625b521b7b967b11798b11ec", "1g0qbhffl");
+
+    tawk.showWidget();
+
+    tawk.onStatusChange((status) => {
+      // console.log(status)
+    });
+  }, []);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.

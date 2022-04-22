@@ -8,10 +8,9 @@ import {
   RootRef,
   Theme,
   Toolbar,
-  Typography,
 } from "@material-ui/core";
 import clsx from "clsx";
-import MenuItem, { ItemVariant } from "./MenuItem";
+import MenuItem from "./MenuItem";
 import { Menu } from "@material-ui/icons";
 import { useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
