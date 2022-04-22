@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { getTokenPrice } from "../src/api/dexguru";
 import Image from "next/image";
 import get_google_reviews from "./api/reviews";
+import { Reviews } from "../src/components/Review";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -70,9 +71,44 @@ const useStyles = makeStyles((theme) => ({
   aff: {
     marginRight: "10%",
   },
+  reviewContainer: {
+    padding: "0 5% 0% 10%",
+    margin: "0 0 5% 0",
+
+    [theme.breakpoints.down("md")]: {
+      padding: "0 5% 0% 5%",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "2% 5% 0 5%",
+      margin: "5% 0 5% 0",
+    },
+  },
+  reviews: {
+    display: "flex",
+    alignItems: "flex-start",
+    margin: "0 1% 0 1%",
+    gap: "10%",
+    flexBasis: "100%",
+
+    [theme.breakpoints.down("md")]: {
+      flexFlow: "wrap",
+      gap: "5%",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      display: "block",
+      textAlign: "left",
+    },
+  },
 }));
 
-export default function Home({ products, reviews }) {
+export default function Home({
+  products,
+  reviews,
+  rating,
+  user_ratings_total,
+}) {
   const classes = useStyles();
   const [token, setToken] = useState(undefined);
 
@@ -91,8 +127,6 @@ export default function Home({ products, reviews }) {
       // ignore.
     }
   });
-
-  console.log("reviews", reviews);
 
   return (
     <div className={classes.container}>
@@ -136,6 +170,17 @@ export default function Home({ products, reviews }) {
       <section id="tokenomics">
         <Tokenomics />
       </section>
+
+      <section id="reviews" className={classes.reviewContainer}>
+        <Typography variant="h5">
+          Google Rating - {rating} based on {user_ratings_total} reviews
+        </Typography>
+        <br />
+        <div className={classes.reviews}>
+          <Reviews reviews={reviews} />
+        </div>
+      </section>
+
       <div className={classes.productsContainer}>
         <Typography variant="h4" className={classes.productsTitle}>
           Services
@@ -153,12 +198,14 @@ export default function Home({ products, reviews }) {
 
 export async function getServerSideProps({ params, preview = false }) {
   const products = await getAllProductsFromCMS();
-  const reviews = await get_google_reviews();
+  const { reviews, rating, user_ratings_total } = await get_google_reviews();
 
   return {
     props: {
       products: products,
       reviews,
+      rating,
+      user_ratings_total,
     },
   };
 }
