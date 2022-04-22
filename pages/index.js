@@ -9,6 +9,7 @@ import { getAllProductsFromCMS } from "../pages/api/graphcms";
 import { useEffect, useState } from "react";
 import { getTokenPrice } from "../src/api/dexguru";
 import Image from "next/image";
+import get_google_reviews from "./api/reviews";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home({ products }) {
+export default function Home({ products, reviews }) {
   const classes = useStyles();
   const [token, setToken] = useState(undefined);
 
@@ -90,6 +91,8 @@ export default function Home({ products }) {
       // ignore.
     }
   });
+
+  console.log("reviews", reviews);
 
   return (
     <div className={classes.container}>
@@ -150,10 +153,12 @@ export default function Home({ products }) {
 
 export async function getServerSideProps({ params, preview = false }) {
   const products = await getAllProductsFromCMS();
+  const reviews = await get_google_reviews();
 
   return {
     props: {
       products: products,
+      reviews,
     },
   };
 }

@@ -1,6 +1,8 @@
 import { Button, makeStyles, Theme, Typography } from "@material-ui/core";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import get_google_reviews from "../../pages/api/reviews";
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
