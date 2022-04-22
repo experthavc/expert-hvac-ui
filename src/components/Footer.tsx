@@ -139,9 +139,14 @@ const BottomFooter = () => {
           </Link>
         </span>
 
-        <Link href="/careers">
-          <Typography variant="body2">Careers</Typography>
-        </Link>
+        <Typography variant="body2">
+          Engineered by{" "}
+          <Link href="https://neuronstack.com">
+            <a target="_blank" rel="noopener noreferrer">
+              Neuronstack Inc.
+            </a>
+          </Link>{" "}
+        </Typography>
       </div>
     </div>
   );
