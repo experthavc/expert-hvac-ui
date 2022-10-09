@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       display: "block",
       borderRadius: 0,
       minHeight: "250px",
-      margin: "10% 1% 50px 1%",
+      margin: "20% 1% 50px 1%",
     },
     backgroundColor: theme.palette.primary.main,
   },
