@@ -29,7 +29,7 @@ export default function MyApp(props) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <link rel="shortcut icon" href="/images/tdot-dark.png" />
+        <link rel="shortcut icon" href="/images/tdoark.png" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -39,13 +39,13 @@ export default function MyApp(props) {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/images/tdot-dark.png"
+          href="/images/tdodark.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/images/tdot-dark.png"
+          href="/images/tt-dark.png"
         />
       </Head>
       <ThemeProvider theme={theme}>
