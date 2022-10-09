@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   vector: {
     flexBasis: "50%",
     marginTop: "5%",
+    borderRadius: "5px",
+    overflow: "hidden",
 
     [theme.breakpoints.down("xs")]: {
       display: "none",
@@ -62,15 +64,22 @@ const Tokenomics = () => {
   return (
     <div className={classes.container}>
       <div className={classes.vector}>
-        <Image src="/images/main-vector.png" width={655} height={490} />
+        <Image
+          src="/images/who-we-are.jpeg"
+          width={655}
+          height={490}
+          objectFit="contain"
+        />
       </div>
       <div className={classes.steps}>
         <Typography className={classes.title} variant="h2">
           WHO WE ARE
         </Typography>
         <Typography className={classes.description} variant="subtitle1">
-          You are not just investing in a roof; you are investing in Peace of
-          Mind with T DOT Roofers.
+          We are the GTA's leading accredited heating and cooling service.We are
+          committed to, and pride ourselves on, good workmanship and service
+          that exceeds your expectations. Any project, big or small, gets the
+          same attention to detail and commitment from our team.
         </Typography>
 
         <div className={classes.step}>
@@ -89,16 +98,7 @@ const Tokenomics = () => {
             Services
           </Typography>
           <Typography variant="body1">
-            Skylight, Roof repairs, Residential Roofing, Commerical Roofing
-          </Typography>
-        </div>
-
-        <div className={classes.step}>
-          <Typography variant="h5" className={classes.stepSpacing}>
-            Metal Roofs
-          </Typography>
-          <Typography variant="body1">
-            We are specialized in metal roofs as well.
+            Furnances, Air Conditioners, Air Quality, Temparature Control
           </Typography>
         </div>
 

@@ -85,8 +85,8 @@ const Main = () => {
 
   const slides = [
     { id: 0, url: `/images/inspection.png` },
-    { id: 1, url: `/images/main.png` },
-    { id: 2, url: `/images/roof.png` },
+    { id: 1, url: `/images/hvac-1.png` },
+    { id: 2, url: `/images/inspection.png` },
   ];
 
   useEffect(() => {
@@ -114,11 +114,10 @@ const Main = () => {
     <div className={classes.container}>
       <div className={classes.leftPanel}>
         <Typography variant="h1" className={classes.businessLine}>
-          The roofer <br /> you can trust. Best services in GTA
+          The HVAC company <br /> you can trust. Best services in GTA
         </Typography>
         <Typography variant="body1" className={classes.busDescription}>
-          T Dot Roofers are the best roofing company in GTA. We are specialized
-          in commercial and residential services
+          We are the GTA's leading accredited heating and cooling service
         </Typography>
         <Button
           classes={{ label: classes.ctaButtonLabel }}
@@ -126,7 +125,7 @@ const Main = () => {
           className={classes.ctaButton}
           onClick={(e: any) => {
             e.preventDefault();
-            window.location.href = "tel:+14164519293";
+            window.location.href = "tel:+14165690428";
           }}
         >
           Call now

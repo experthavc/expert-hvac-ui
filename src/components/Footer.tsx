@@ -129,7 +129,8 @@ const BottomFooter = () => {
     <div className={classes.bottomFooter}>
       <div className={classes.copyright}>
         <Typography variant="body2">
-          © {new Date().getFullYear()} T dot Roofers Inc., All rights reserved.
+          © {new Date().getFullYear()} Expert HVAC Solutions Inc., All rights
+          reserved.
         </Typography>
       </div>
       <div className={classes.footerNav}>
@@ -160,12 +161,11 @@ const Footer = () => {
       <footer className={classes.footer}>
         <div className={classes.branding}>
           <div className={classes.brand}>
-            <Image src="/images/tdot-yellow.png" height={80} width={120} />
+            <Image src="/images/hvac-logo.png" height={30} width={30} />
           </div>
           <div>
             <Typography className={classes.brandDescription} variant="body1">
-              T Dot Roofers are the best roofing company in GTA. We are
-              specialized in commercial and residential services
+              We are the GTA's leading accredited heating and cooling service
             </Typography>
           </div>
         </div>

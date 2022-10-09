@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   metadataContainer: {
+    display: "none",
     padding: "0 5% 0% 10%",
     margin: "0 0 5% 0",
 
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
       margin: "5% 0 0 0",
       display: "block",
       textAlign: "left",
+      display: "none",
     },
   },
   aff: {
@@ -132,53 +134,9 @@ export default function Home({
     <div className={classes.container}>
       <Header />
       <Main />
-      <div className={classes.metadataContainer}>
-        <span className={classes.aff}>
-          <Image
-            src="/images/bp.jpg"
-            height={80}
-            width={120}
-            alt="fermeon-token-bg"
-          />
-        </span>
-        <span className={classes.aff}>
-          <Image
-            src="/images/gaf.jpg"
-            height={80}
-            width={120}
-            alt="fermeon-token-bg"
-          />
-        </span>
-        <span className={classes.aff}>
-          <Image
-            src="/images/iko.jpg"
-            height={80}
-            width={120}
-            alt="fermeon-token-bg"
-          />
-        </span>
-        <span className={classes.aff}>
-          <Image
-            src="/images/certainteed.jpg"
-            height={80}
-            width={120}
-            alt="fermeon-token-bg"
-          />
-        </span>
-      </div>
 
       <section id="tokenomics">
         <Tokenomics />
-      </section>
-
-      <section id="reviews" className={classes.reviewContainer}>
-        <Typography variant="h5">
-          Google Rating - {rating} based on {user_ratings_total} reviews
-        </Typography>
-        <br />
-        <div className={classes.reviews}>
-          <Reviews reviews={reviews} />
-        </div>
       </section>
 
       <div className={classes.productsContainer}>
@@ -198,14 +156,10 @@ export default function Home({
 
 export async function getServerSideProps({ params, preview = false }) {
   const products = await getAllProductsFromCMS();
-  const { reviews, rating, user_ratings_total } = await get_google_reviews();
 
   return {
     props: {
       products: products,
-      reviews,
-      rating,
-      user_ratings_total,
     },
   };
 }

@@ -11,15 +11,7 @@ import { useEffect } from "react";
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 
-  useEffect(() => {
-    const tawk = new TawkTo("625b521b7b967b11798b11ec", "1g0qbhffl");
-
-    tawk.showWidget();
-
-    tawk.onStatusChange((status) => {
-      // console.log(status)
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -32,7 +24,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Tdot Roofers</title>
+        <title>Expert HVAC Solutions</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

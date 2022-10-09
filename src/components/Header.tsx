@@ -47,6 +47,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   logo: {
+    color: "white",
+    fontSize: "18px",
     display: "flex",
     alignItems: "center",
     width: "300px",
@@ -155,16 +157,6 @@ const NavigationList = ({ callback }) => {
         </ListItem>
         <ListItem
           classes={{ root: classes.listItem, gutters: classes.listItemGutters }}
-          key={"faqItem"}
-        >
-          <MenuItem
-            key={"faq"}
-            Item={{ name: "FAQ", link: "/faq" }}
-            callback={callback}
-          />
-        </ListItem>
-        <ListItem
-          classes={{ root: classes.listItem, gutters: classes.listItemGutters }}
           key={"buyNowItem"}
         >
           <MenuItem
@@ -198,11 +190,7 @@ const Header = () => {
             <div className={clsx(classes.grow, classes.logoContainer)}>
               <span className={classes.primaryLink}>
                 <Link href="/" className={classes.logo}>
-                  <Image
-                    src="/images/tdot-yellow.png"
-                    height={70}
-                    width={120}
-                  />
+                  Expret HVAC Solutions
                 </Link>
               </span>
             </div>
