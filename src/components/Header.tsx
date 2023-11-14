@@ -12,7 +12,7 @@ import {
 import clsx from "clsx";
 import MenuItem from "./MenuItem";
 import { Menu } from "@material-ui/icons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import Image from "next/image";
 
@@ -175,16 +175,14 @@ const Header = () => {
   const [visibleNavMenu, toggleNav] = useState(false);
   const headerRef = useRef(null);
 
-  const headerHeight = headerRef.current ? headerRef.current.clientHeight : 0;
-
   const menuProps = useSpring({
     opacity: visibleNavMenu ? 1 : 0,
-    marginTop: visibleNavMenu ? headerHeight : -500,
+    marginTop: visibleNavMenu ? 100 : -500,
   });
 
   return (
     <div>
-      <RootRef rootRef={headerRef}>
+      <div ref={headerRef}>
         <AppBar position={"static"} className={classes.header}>
           <Toolbar className={classes.toolbarWrapper}>
             <div className={clsx(classes.grow, classes.logoContainer)}>
@@ -210,7 +208,7 @@ const Header = () => {
             </div>
           </Toolbar>
         </AppBar>
-      </RootRef>
+      </div>
       <div>
         <animated.div
           className={`scrollbar-hidden ${classes.sideNavList}`}
