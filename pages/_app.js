@@ -29,23 +29,23 @@ export default function MyApp(props) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <link rel="shortcut icon" href="/images/tdoark.png" />
+        <link rel="shortcut icon" href="/images/react-logo.png" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/images/tdot-dark.png"
+          href="/images/react-logo.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/images/tdodark.png"
+          href="/images/react-logo.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/images/tt-dark.png"
+          href="/images/react-logo.png"
         />
       </Head>
       <ThemeProvider theme={theme}>
